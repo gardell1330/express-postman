@@ -1,0 +1,57 @@
+{
+    "id": "10024100D9E14D52827A5271A4681585",
+    "code": "12",
+    "description": "testsaaasd update 3",
+    "country": {
+        "id": "BE9772FBDF2E4E8B9BF965DED46C7275",
+        "code": 1,
+        "description": "País",
+        "createdDate": "2020-06-09T03:48:08.672071",
+        "isDeleted": false,
+        "createdBy": "00000000000000000000000000000000"
+    },
+    "propertyType": {
+        "id": "D58F190271B44BA397F89EA60F3D926F",
+        "code": 1,
+        "description": "Inmuebles",
+        "country": {
+            "id": "BE9772FBDF2E4E8B9BF965DED46C7275",
+            "code": 1,
+            "description": "País",
+            "createdDate": "2020-06-09T03:48:08.672071",
+            "isDeleted": false,
+            "createdBy": "00000000000000000000000000000000"
+        },
+        "classification": "A",
+        "requestCurrency": false,
+        "firstCategory": true,
+        "secondCategory": false,
+        "thirdCategory": true,
+        "fourthCategory": true,
+        "exportationCategory": true,
+        "withoutCategory": true,
+        "createdDate": "2020-09-18T04:50:54.898245",
+        "isDeleted": false,
+        "createdBy": "00000000000000000000000000000000"
+    },
+    "amortize": false,
+    "percentageAmortize": 0.0,
+    "usefulLife": 0,
+    "priorApril1992": false,
+    "taxSituation": {
+        "id": "784DA70C6DE3448CB536BA76C66DDED9",
+        "code": 1,
+        "description": "Gravado",
+        "behavior": "GRAVADO",
+        "createdDate": "2020-09-18T04:50:54.743275",
+        "isDeleted": false,
+        "createdBy": "00000000000000000000000000000000"
+    },
+    "valuationType": 1,
+    "inflationAdjustment": false,
+    "createdDate": "2020-09-23T18:59:15.686471",
+    "changedDate": "2020-09-25T13:41:00.341081",
+    "isDeleted": false,
+    "createdBy": "28F3F89673D74399A779974CCB24B81E",
+    "changedBy": "28F3F89673D74399A779974CCB24B81E"
+}

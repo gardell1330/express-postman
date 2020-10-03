@@ -1,0 +1,759 @@
+{
+	"info": {
+		"_postman_id": "01fc09d0-382d-43b9-a4af-e3fe41931c80",
+		"name": "AR-Tax TR",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "60dbe393-239d-455b-927f-2df3f1e23c41",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", \"UDSLongToken \" + jsonData.LongToken);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"nico.mdp+onvio-demo-ar-it@gmail.com\",\r\n    \"password\": \"Nico1234!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://demo.onvio.com.ar/api/security/v2/sessions",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"onvio",
+						"com",
+						"ar"
+					],
+					"path": [
+						"api",
+						"security",
+						"v2",
+						"sessions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssetType",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3578af1b-2e4e-4733-b7e3-5d6554a1d68d",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "44693d1e-f94a-410f-ae48-ab440044713e",
+						"exec": [
+							"if(pm.collectionVariables.get(\"countryId\")!==\"\")\r",
+							"{\r",
+							"    let idGuid = pm.variables.replaceIn('{{$guid}}')\r",
+							"\r",
+							"    pm.variables.set(\"countryId\" , idGuid)\r",
+							"}\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/countries/BE9772FBDF2E4E8B9BF965DED46C7275/asset-types/",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"countries",
+						"BE9772FBDF2E4E8B9BF965DED46C7275",
+						"asset-types",
+						""
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Asset Type",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "UDSLongToken {{$guid}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site}}/api/ar-tax/v1/countries/{{$guid}}/asset-types/",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"api",
+								"ar-tax",
+								"v1",
+								"countries",
+								"{{$guid}}",
+								"asset-types",
+								""
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Oct 2020 17:50:25 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "expires",
+							"value": "-1"
+						},
+						{
+							"key": "x-route-id",
+							"value": "5d7c7f9e-9bf3-4905-a138-66c6e7400dcc"
+						},
+						{
+							"key": "x-cobalt-pcid",
+							"value": "5d7c7f9e-9bf3-4905-a138-66c6e7400dcc"
+						},
+						{
+							"key": "x-call-id",
+							"value": "5d7c7f9e-9bf3-4905-a138-66c6e7400dcc"
+						},
+						{
+							"key": "x-chain-id",
+							"value": "5d7c7f9e-9bf3-4905-a138-66c6e7400dcc"
+						},
+						{
+							"key": "x-cobalt-endpoint-status",
+							"value": "UnderDevelopment"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "upgrade-insecure-requests"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000;"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"D58F190271B44BA397F89EA60F3D926F\",\n        \"code\": 1,\n        \"description\": \"Inmuebles\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": true,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"5A3D8D2B467C428A95A29372B798DF05\",\n        \"code\": 2,\n        \"description\": \"Derechos Reales\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": true,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": false,\n        \"exportationCategory\": false,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"208BDCFD5ADC4039B09C4E0AD1F25052\",\n        \"code\": 3,\n        \"description\": \"Moto\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"B12C0D68ADD844C3A58898BA8F51DE9E\",\n        \"code\": 4,\n        \"description\": \"Camión\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"5856F91031B94B6A9FF1ADFBA6ECFFA6\",\n        \"code\": 5,\n        \"description\": \"Transporte Pasajeros\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"A2E7CCC0187247F7A8DA47E96185B230\",\n        \"code\": 6,\n        \"description\": \"Automóvil\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"1A643DD7F0C6462A991A0AA20FBBFB2C\",\n        \"code\": 7,\n        \"description\": \"Naves\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"4EEF43329BA04ABF9E0C68070B3989EA\",\n        \"code\": 8,\n        \"description\": \"Aeronaves\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"6B6C53C417434F3195DDF28214DDC426\",\n        \"code\": 9,\n        \"description\": \"Títulos, Acciones, cuotas o participaciones Sociales y Otros títulos valores, con Cotización\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": true,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": false,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"E3F7A3F3853D45BAA3A4CE3C7CA4B346\",\n        \"code\": 10,\n        \"description\": \"Títulos, Acciones, cuotas o participaciones Sociales y Otros títulos valores, sin Cotización\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": true,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": false,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"156E53109CE647C8A96C16885A100C0D\",\n        \"code\": 11,\n        \"description\": \"Créditos\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": true,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": false,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"22CCA3C4F1CA4A9088D6AD92925068B8\",\n        \"code\": 12,\n        \"description\": \"Depósitos en Dinero\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": true,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": false,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"347EE3D6D4FE45749671150BAB0882D8\",\n        \"code\": 13,\n        \"description\": \"Dinero en Efectivo\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": true,\n        \"firstCategory\": false,\n        \"secondCategory\": true,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": false,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"24DBDF7BE3B74C99A4A81340E054BD1E\",\n        \"code\": 14,\n        \"description\": \"Bienes Muebles Registrables\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"7BBE1CAFC2F243578065480A55655386\",\n        \"code\": 15,\n        \"description\": \"Otros Bienes\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": true,\n        \"fourthCategory\": true,\n        \"exportationCategory\": true,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"0F93AA5893774766BF72DDB74E7EB6D7\",\n        \"code\": 16,\n        \"description\": \"Bienes Personales y Muebles del Hogar\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": true,\n        \"exportationCategory\": false,\n        \"withoutCategory\": true,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"9A4D886841124A408AF4C6269A3D4D53\",\n        \"code\": 17,\n        \"description\": \"Disponibilidades (Explotaciones)\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": true,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"D02BDBAAFBFE45EDB9CDA350149FD2E9\",\n        \"code\": 18,\n        \"description\": \"Bienes de Cambio (Explotaciones)\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": true,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"7C4A517704E248BA8E847676E1F39DD8\",\n        \"code\": 19,\n        \"description\": \"Bienes de Uso (Explotaciones)\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"A\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": true,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"652263EC54FF4BD8B6398086C3DCEF6A\",\n        \"code\": 20,\n        \"description\": \"Créditos (Explotaciones)\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": true,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"A6B55C1ECAAA45F794A5BA1EDE9862A6\",\n        \"code\": 21,\n        \"description\": \"Inversiones (Explotaciones)\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": true,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"950FF15E9A634CAD868FAE5600248C65\",\n        \"code\": 22,\n        \"description\": \"Bienes Intangibles (Explotaciones)\",\n        \"country\": {\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\n            \"code\": 1,\n            \"description\": \"País\",\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\n            \"isDeleted\": false,\n            \"createdBy\": \"00000000000000000000000000000000\"\n        },\n        \"classification\": \"O\",\n        \"requestCurrency\": false,\n        \"firstCategory\": false,\n        \"secondCategory\": false,\n        \"thirdCategory\": false,\n        \"fourthCategory\": false,\n        \"exportationCategory\": true,\n        \"withoutCategory\": false,\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "TaxSituation",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/tax-situations",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"tax-situations"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Tax Situation",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{site}}/api/ar-tax/v1/tax-situations",
+							"host": [
+								"{{site}}"
+							],
+							"path": [
+								"api",
+								"ar-tax",
+								"v1",
+								"tax-situations"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 02 Oct 2020 18:41:22 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Vary",
+							"value": "Accept-Encoding"
+						},
+						{
+							"key": "Cache-Control",
+							"value": "no-cache"
+						},
+						{
+							"key": "Pragma",
+							"value": "no-cache"
+						},
+						{
+							"key": "expires",
+							"value": "-1"
+						},
+						{
+							"key": "x-route-id",
+							"value": "dc1f252a-fc9b-4fbc-8dd4-1b25184d0e3e"
+						},
+						{
+							"key": "x-cobalt-pcid",
+							"value": "dc1f252a-fc9b-4fbc-8dd4-1b25184d0e3e"
+						},
+						{
+							"key": "x-call-id",
+							"value": "dc1f252a-fc9b-4fbc-8dd4-1b25184d0e3e"
+						},
+						{
+							"key": "x-chain-id",
+							"value": "dc1f252a-fc9b-4fbc-8dd4-1b25184d0e3e"
+						},
+						{
+							"key": "x-cobalt-endpoint-status",
+							"value": "UnderDevelopment"
+						},
+						{
+							"key": "content-security-policy",
+							"value": "upgrade-insecure-requests"
+						},
+						{
+							"key": "Strict-Transport-Security",
+							"value": "max-age=31536000;"
+						},
+						{
+							"key": "X-Content-Type-Options",
+							"value": "nosniff"
+						},
+						{
+							"key": "Content-Encoding",
+							"value": "gzip"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"id\": \"784DA70C6DE3448CB536BA76C66DDED9\",\n        \"code\": 1,\n        \"description\": \"Gravado\",\n        \"behavior\": \"GRAVADO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"C642EA5A2E494721AFE84D7F5CC98698\",\n        \"code\": 2,\n        \"description\": \"No Alcanzado\",\n        \"behavior\": \"NOALCANZADO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"50213A74254E4EE69456E9A9F1F66F8C\",\n        \"code\": 3,\n        \"description\": \"Mínimo no imponible\",\n        \"behavior\": \"MINNOIMP\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"9A17AF766E8E43B5914917ACC98D6E7A\",\n        \"code\": 4,\n        \"description\": \"Mínimo exento\",\n        \"behavior\": \"MINEXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"5F1360EE24A744D7AA49D36BE9E431DA\",\n        \"code\": 5,\n        \"description\": \"Exento Convenio Internacional\",\n        \"behavior\": \"EXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"5572F7CDA2E844769B39883672B93869\",\n        \"code\": 6,\n        \"description\": \"Exento Por Ley\",\n        \"behavior\": \"EXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"23AC6176228C409C885F1D6FD9905A8C\",\n        \"code\": 7,\n        \"description\": \"Exento Bienes incluidos en otros bienes del hogar\",\n        \"behavior\": \"EXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"D7DFCDFADE7B4B4E95102DD802D22329\",\n        \"code\": 8,\n        \"description\": \"Exento Computables en el impuesto a la ganancia mínima presunta\",\n        \"behavior\": \"EXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"AD2AD3CED10C41758AA9EB7861ED2244\",\n        \"code\": 9,\n        \"description\": \"Exento Otros\",\n        \"behavior\": \"EXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    },\n    {\n        \"id\": \"049DC107B6184B7995A05BC395C54FB1\",\n        \"code\": 10,\n        \"description\": \"Exento Titulares de la nuda propiedad\",\n        \"behavior\": \"EXENTO\",\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\n        \"isDeleted\": false,\n        \"createdBy\": \"00000000000000000000000000000000\"\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Country",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/country",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"country"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AmortizationType",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9f185087-8d9e-4d0a-a910-87112277e9ee",
+						"exec": [
+							"let idGuid = pm.variables.replaceIn('{{$guid}}')\r",
+							"\r",
+							"pm.variables.set(\"id\" , idGuid.replace(/-/g, '').toUpperCase())"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/amortization-types",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"amortization-types"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Category",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/category",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"category"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "SubCategory",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/category/2798B02781854D1F84BF49909A7ABD39/subcategory",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"category",
+						"2798B02781854D1F84BF49909A7ABD39",
+						"subcategory"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TaxReturn",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/project/6BF053164BF44E468999ABFA093F42B5/tax-return/gridquery",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"project",
+						"6BF053164BF44E468999ABFA093F42B5",
+						"tax-return",
+						"gridquery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssetClass",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/asset-class/gridquery",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"asset-class",
+						"gridquery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssetClass",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"companyId\":\"6BF053164BF44E468999ABFA093F42B5\",\r\n    \"code\": \"22\",\r\n    \"description\": \"test validation\",\r\n    \"country\": {\r\n        \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\"\r\n    },\r\n    \"propertyType\": {\r\n        \"id\": \"d58f1902-71b4-4ba3-97f8-9ea60f3d926f\"        \r\n    },\r\n    \"amortize\": false,    \r\n    \"priorApril1992\": false,\r\n    \"taxSituation\": {\r\n        \"id\": \"784DA70C6DE3448CB536BA76C66DDED9\"        \r\n    },\r\n    \"valuationType\": 1,\r\n    \"inflationAdjustment\": false    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/asset-class",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"asset-class"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssetClass",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": \"10024100D9E14D52827A5271A4681585\",\r\n    \"code\": \"12\",\r\n    \"description\": \"testsaaasd update 3\",\r\n    \"country\": {\r\n        \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\r\n        \"code\": 1,\r\n        \"description\": \"País\",\r\n        \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"propertyType\": {\r\n        \"id\": \"D58F190271B44BA397F89EA60F3D926F\",\r\n        \"code\": 1,\r\n        \"description\": \"Inmuebles\",\r\n        \"country\": {\r\n            \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\r\n            \"code\": 1,\r\n            \"description\": \"País\",\r\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"00000000000000000000000000000000\"\r\n        },\r\n        \"classification\": \"A\",\r\n        \"requestCurrency\": false,\r\n        \"firstCategory\": true,\r\n        \"secondCategory\": false,\r\n        \"thirdCategory\": true,\r\n        \"fourthCategory\": true,\r\n        \"exportationCategory\": true,\r\n        \"withoutCategory\": true,\r\n        \"createdDate\": \"2020-09-18T04:50:54.898245\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"amortize\": false,\r\n    \"percentageAmortize\": 0.0,\r\n    \"usefulLife\": 0,\r\n    \"priorApril1992\": false,\r\n    \"taxSituation\": {\r\n        \"id\": \"784DA70C6DE3448CB536BA76C66DDED9\",\r\n        \"code\": 1,\r\n        \"description\": \"Gravado\",\r\n        \"behavior\": \"GRAVADO\",\r\n        \"createdDate\": \"2020-09-18T04:50:54.743275\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"valuationType\": 1,\r\n    \"inflationAdjustment\": false,\r\n    \"createdDate\": \"2020-09-23T18:59:15.686471\",\r\n    \"changedDate\": \"2020-09-25T13:41:00.341081\",\r\n    \"isDeleted\": false,\r\n    \"createdBy\": \"28F3F89673D74399A779974CCB24B81E\",\r\n    \"changedBy\": \"28F3F89673D74399A779974CCB24B81E\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/asset-class/10024100D9E14D52827A5271A4681585",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"asset-class",
+						"10024100D9E14D52827A5271A4681585"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AssetClass",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{site}}/api/ar-tax/v1/asset-class/F48A6B885A3045A19A3F8764FEE16ADB",
+					"host": [
+						"{{site}}"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"asset-class",
+						"F48A6B885A3045A19A3F8764FEE16ADB"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Source",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"url": {
+					"raw": "https://demo.onvio.com.ar/api/ar-tax/v1/taxreturn/FD38801C85954293B8382437F56B601B/source/gridquery",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"onvio",
+						"com",
+						"ar"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"taxreturn",
+						"FD38801C85954293B8382437F56B601B",
+						"source",
+						"gridquery"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Source",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"taxReturn\": {\r\n        \"id\": \"FD38801C85954293B8382437F56B601B\",\r\n        \"companyId\": \"87046A5694E34867B50F23E83222B1C2\",\r\n        \"projectId\": \"6BF053164BF44E468999ABFA093F42B5\",\r\n        \"ownerId\": \"13C48660366E4BB6A85C605C1BB51F09\",\r\n        \"period\": \"2519\",\r\n        \"version\": 0,\r\n        \"status\": {\r\n            \"id\": \"54956F0091DC46B3A89A0901540FEC1E\",\r\n            \"code\": \"OPEN\",\r\n            \"description\": \"Abierta\",\r\n            \"createdDate\": \"2020-08-01T03:47:51.113544\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"00000000000000000000000000000000\"\r\n        },\r\n        \"notes\": \"Hola\",\r\n        \"dueDateIncomeTax\": \"2519-12-01T00:00:00\",\r\n        \"dueDatePropertyTax\": \"2519-12-01T00:00:00\",\r\n        \"transferredData\": false,\r\n        \"createdDate\": \"2020-09-09T19:49:20.383716\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"96FA2FDDC03640D79AED9E04A672C405\"\r\n    },\r\n    \"ownerId\": \"13C48660366E4BB6A85C605C1BB51F09\",\r\n    \"country\": {\r\n        \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\r\n        \"code\": 1,\r\n        \"description\": \"País\",\r\n        \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"category\": {\r\n        \"id\": \"2798B02781854D1F84BF49909A7ABD39\",\r\n        \"code\": 1,\r\n        \"description\": \"Primera Categoría\",\r\n        \"processOrder\": 2,\r\n        \"inputOrder\": 1,\r\n        \"generateSpecificTaxLoss\": false,\r\n        \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\",\r\n        \"subcategories\": []\r\n    },\r\n    \"subcategory\": {\r\n        \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\r\n        \"code\": \"100\",\r\n        \"description\": \"Renta de Inmuebles Urbanos\",\r\n        \"category\": {\r\n            \"id\": \"2798B02781854D1F84BF49909A7ABD39\",\r\n            \"code\": 1,\r\n            \"description\": \"Primera Categoría\",\r\n            \"processOrder\": 2,\r\n            \"inputOrder\": 1,\r\n            \"generateSpecificTaxLoss\": false,\r\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"00000000000000000000000000000000\",\r\n            \"subcategories\": []\r\n        },\r\n        \"createdDate\": \"2020-06-26T06:19:10.965694\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"description\": \"Source test update\",\r\n    \"startDate\": \"2020-09-15T10:37:51.041\",\r\n    \"endDate\": \"2020-09-15T10:37:51.041\",\r\n    \"societyCode\": \"222\",\r\n    \"taxId\" : \"20349136654\",\r\n    \"ownData\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:63716/api/ar-tax/v1/source/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "63716",
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"source",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Source",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \r\n    \"taxReturn\": {\r\n        \"id\": \"FD38801C85954293B8382437F56B601B\",\r\n        \"companyId\": \"87046A5694E34867B50F23E83222B1C2\",\r\n        \"projectId\": \"6BF053164BF44E468999ABFA093F42B5\",\r\n        \"ownerId\": \"13C48660366E4BB6A85C605C1BB51F09\",\r\n        \"period\": \"2519\",\r\n        \"version\": 0,\r\n        \"status\": {\r\n            \"id\": \"54956F0091DC46B3A89A0901540FEC1E\",\r\n            \"code\": \"OPEN\",\r\n            \"description\": \"Abierta\",\r\n            \"createdDate\": \"2020-08-01T03:47:51.113544\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"00000000000000000000000000000000\"\r\n        },\r\n        \"notes\": \"Hola\",\r\n        \"dueDateIncomeTax\": \"2519-12-01T00:00:00\",\r\n        \"dueDatePropertyTax\": \"2519-12-01T00:00:00\",\r\n        \"transferredData\": false,\r\n        \"createdDate\": \"2020-09-09T19:49:20.383716\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"96FA2FDDC03640D79AED9E04A672C405\"\r\n    },\r\n    \"ownerId\": \"13C48660366E4BB6A85C605C1BB51F09\",\r\n    \"country\": {\r\n        \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\r\n        \"code\": 1,\r\n        \"description\": \"País\",\r\n        \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"category\": {\r\n        \"id\": \"2798B02781854D1F84BF49909A7ABD39\",\r\n        \"code\": 1,\r\n        \"description\": \"Primera Categoría\",\r\n        \"processOrder\": 2,\r\n        \"inputOrder\": 1,\r\n        \"generateSpecificTaxLoss\": false,\r\n        \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\",\r\n        \"subcategories\": []\r\n    },\r\n    \"subcategory\": {\r\n        \"id\": \"BE9772FBDF2E4E8B9BF965DED46C7275\",\r\n        \"code\": \"100\",\r\n        \"description\": \"Renta de Inmuebles Urbanos\",\r\n        \"category\": {\r\n            \"id\": \"2798B02781854D1F84BF49909A7ABD39\",\r\n            \"code\": 1,\r\n            \"description\": \"Primera Categoría\",\r\n            \"processOrder\": 2,\r\n            \"inputOrder\": 1,\r\n            \"generateSpecificTaxLoss\": false,\r\n            \"createdDate\": \"2020-06-09T03:48:08.672071\",\r\n            \"isDeleted\": false,\r\n            \"createdBy\": \"00000000000000000000000000000000\",\r\n            \"subcategories\": []\r\n        },\r\n        \"createdDate\": \"2020-06-26T06:19:10.965694\",\r\n        \"isDeleted\": false,\r\n        \"createdBy\": \"00000000000000000000000000000000\"\r\n    },\r\n    \"description\": \"Source test update\",\r\n    \"startDate\": \"2020-09-15T10:37:51.041\",\r\n    \"endDate\": \"2020-09-15T10:37:51.041\",\r\n    \"societyCode\": \"222\",\r\n    \"taxId\" : \"20349136654\",\r\n    \"ownData\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:63716/api/ar-tax/v1/source/BD91369B9D2D4FF7BCC7919FB40B5AEE",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "63716",
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"source",
+						"BD91369B9D2D4FF7BCC7919FB40B5AEE"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Source",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://demo.onvio.com.ar/api/ar-tax/v1/source/816734AC26E8420EB6D08DD33DCA1D17",
+					"protocol": "https",
+					"host": [
+						"demo",
+						"onvio",
+						"com",
+						"ar"
+					],
+					"path": [
+						"api",
+						"ar-tax",
+						"v1",
+						"source",
+						"816734AC26E8420EB6D08DD33DCA1D17"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

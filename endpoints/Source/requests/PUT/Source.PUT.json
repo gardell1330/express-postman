@@ -1,0 +1,72 @@
+{    
+    "taxReturn": {
+        "id": "FD38801C85954293B8382437F56B601B",
+        "companyId": "87046A5694E34867B50F23E83222B1C2",
+        "projectId": "6BF053164BF44E468999ABFA093F42B5",
+        "ownerId": "13C48660366E4BB6A85C605C1BB51F09",
+        "period": "2519",
+        "version": 0,
+        "status": {
+            "id": "54956F0091DC46B3A89A0901540FEC1E",
+            "code": "OPEN",
+            "description": "Abierta",
+            "createdDate": "2020-08-01T03:47:51.113544",
+            "isDeleted": false,
+            "createdBy": "00000000000000000000000000000000"
+        },
+        "notes": "Hola",
+        "dueDateIncomeTax": "2519-12-01T00:00:00",
+        "dueDatePropertyTax": "2519-12-01T00:00:00",
+        "transferredData": false,
+        "createdDate": "2020-09-09T19:49:20.383716",
+        "isDeleted": false,
+        "createdBy": "96FA2FDDC03640D79AED9E04A672C405"
+    },
+    "ownerId": "13C48660366E4BB6A85C605C1BB51F09",
+    "country": {
+        "id": "BE9772FBDF2E4E8B9BF965DED46C7275",
+        "code": 1,
+        "description": "País",
+        "createdDate": "2020-06-09T03:48:08.672071",
+        "isDeleted": false,
+        "createdBy": "00000000000000000000000000000000"
+    },
+    "category": {
+        "id": "2798B02781854D1F84BF49909A7ABD39",
+        "code": 1,
+        "description": "Primera Categoría",
+        "processOrder": 2,
+        "inputOrder": 1,
+        "generateSpecificTaxLoss": false,
+        "createdDate": "2020-06-09T03:48:08.672071",
+        "isDeleted": false,
+        "createdBy": "00000000000000000000000000000000",
+        "subcategories": []
+    },
+    "subcategory": {
+        "id": "BE9772FBDF2E4E8B9BF965DED46C7275",
+        "code": "100",
+        "description": "Renta de Inmuebles Urbanos",
+        "category": {
+            "id": "2798B02781854D1F84BF49909A7ABD39",
+            "code": 1,
+            "description": "Primera Categoría",
+            "processOrder": 2,
+            "inputOrder": 1,
+            "generateSpecificTaxLoss": false,
+            "createdDate": "2020-06-09T03:48:08.672071",
+            "isDeleted": false,
+            "createdBy": "00000000000000000000000000000000",
+            "subcategories": []
+        },
+        "createdDate": "2020-06-26T06:19:10.965694",
+        "isDeleted": false,
+        "createdBy": "00000000000000000000000000000000"
+    },
+    "description": "Source test update",
+    "startDate": "2020-09-15T10:37:51.041",
+    "endDate": "2020-09-15T10:37:51.041",
+    "societyCode": "222",
+    "taxId" : "20349136654",
+    "ownData": true
+}
