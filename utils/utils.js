@@ -13,8 +13,14 @@ let GetResponse = (request) => {
             respuesta = JSON.parse(fs.readFileSync(pathResponse));
         }
     } catch (error) {
-        console.error(err);
-        return;
+        let pathResponse = `${base}/response/${request.method}/`;
+        fs.readdir(pathResponse, (err, files) => {
+            if (err) {
+                return console.log("Se necesita por lo menos una respuesta");
+            }
+
+            respuesta = JSON.parse(fs.readFileSync(underscore.first(files)));
+        });
     }
     return respuesta;
 }
