@@ -5,7 +5,7 @@ const app = express();
 
 let GenerateRoutes = (request) => {
     let route = '/' + request.url.path.join('/');
-    console.log(route);
+    console.log(`${request.method} - \x1b[34m${route}\x1b[0m`);
     switch (request.method) {
         case 'GET':
             app.get(route, (req, res) => {
